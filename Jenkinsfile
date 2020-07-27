@@ -32,6 +32,15 @@ pipeline {
 	        }
 	      }
 	    }
+		stage('Pushing Image') {
+			steps{    
+				script {
+		                 docker.withRegistry( '', registryCredential ) {
+			               dockerImage.push()
+			          }
+				}
+			}
+		} 
 	    stage('Testing image') {
 	      steps{
 	        script {
@@ -39,7 +48,7 @@ pipeline {
 	        }
 	      }
 	    }
-		stage('Pushing Image') {
+		stage('End of pipeline') {
 	      steps{
 	        script {
 	          sh "echo 5555"
