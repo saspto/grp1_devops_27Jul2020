@@ -41,13 +41,14 @@ pipeline {
 				}
 			}
 		} 
-	    stage('Testing image') {
-	      steps{
-	        script {
+            stage('Testing image') {
+              steps{
+                script {
 	          sh "echo 3333"
-	        }
-	      }
-	    }
+                  env.TEST = sh(returnStdout: true, script: "./test-8123.sh ${env.BUILD_ID} ${env.registry}:${env.BUILD_ID}").trim()
+                }
+              }
+            }
 		stage('End of pipeline') {
 	      steps{
 	        script {
