@@ -1,5 +1,12 @@
 pipeline {
 
+  environment {
+    image = "sasdevs/my-image"
+    registryCredential = "docker-hub"
+    slackChannelTest = credentials('slack-test')
+    dockerImage = ''
+  }
+
   agent any
 
   stages {
@@ -12,7 +19,8 @@ pipeline {
 	    stage('Build Image') {
 	      steps{
 	        script {
-	          sh "docker build -t my-web ."
+	          //sh "docker build -t my-web ."
+	          dockerImage = docker.build image + ":$BUILD_NUMBER"
 	        }
 	      }
 	    }
@@ -20,7 +28,7 @@ pipeline {
 	      steps{
 	        script {
 	          sh "ls -l"
-                  sh "./deploy-test.sh ${env.BUILD_ID} my-web"
+                  sh "./deploy-test.sh ${env.BUILD_ID} ${env.image}:${env.BUILD_ID}"
 	        }
 	      }
 	    }
