@@ -27,7 +27,7 @@ pipeline {
 		stage('Pushing Image') {
 	      steps{
 	        script {
-	          sh "echo 4444"
+	          sh "echo 5555"
 	        }
 	      }
 		}     
