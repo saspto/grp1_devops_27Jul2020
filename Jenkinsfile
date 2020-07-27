@@ -13,8 +13,8 @@ pipeline {
 	      steps{
 	        script {
 	          sh "ls -l"
-	          sh "docker build -t my-web . "
-	          sh "docker run -d -p 443:80 my-web"
+	          sh "docker build -t my-web-grp1 . "
+	          sh "docker run -d -p 443:80 my-web-grp1"
 	        }
 	      }
 	    }
