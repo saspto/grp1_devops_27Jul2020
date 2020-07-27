@@ -21,8 +21,6 @@ pipeline {
 	        script {
 	          sh "ls -l"
                   sh "./deploy-test.sh ${env.BUILD_ID} my-web"
-	          sh "docker build -t my-web . "
-	          sh "docker run -d -p 443:8123 my-web"
 	        }
 	      }
 	    }
