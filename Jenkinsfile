@@ -10,8 +10,12 @@ pipeline {
 	      }
 	    }
 	    stage('Build Image') {
-                sh "docker build -t my-web ."
-            }
+	      steps{
+	        script {
+	          sh "docker build -t my-web ."
+	        }
+	      }
+	    }
 	    stage('Deploy Test Server') {
 	      steps{
 	        script {
