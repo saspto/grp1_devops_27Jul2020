@@ -6,15 +6,16 @@ pipeline {
 
 	    stage('Cloning Git') {
 	      steps {
-	        git 'https://github.com/schogini/HOOK-TEST-P02-GITHUB.git'
+	        git 'https://github.com/saspto/grp1_devops_27Jul2020.git'
 	      }
 	    }
 	    stage('Building image') {
 	      steps{
 	        script {
 	          sh "ls -l"
-	          sh "docker build -t my-web-grp1 . "
-	          sh "docker run -d -p 443:80 my-web-grp1"
+                  sh "docker rm -f my-web 2>&1 "
+	          sh "docker build -t my-web . "
+	          sh "docker run -d -p 443:80 my-web"
 	        }
 	      }
 	    }
