@@ -3,7 +3,7 @@ pipeline {
   environment {
     image = "sasdevs/my-image"
     registryCredential = "docker-hub"
-    slackChannelTest = credentials('slack-test')
+    //slackChannelTest = credentials('slack-test')
     dockerImage = ''
   }
 
